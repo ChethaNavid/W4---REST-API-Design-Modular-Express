@@ -6,7 +6,7 @@ const getAllArticles = async (req, res) => {
 
 const getArticleById = async (req, res) => {
     const articleId = parseInt(req.params.id);
-    const article = articles.find(a => a.id === articleId);
+    const article = articles.findIndex(a => a.id === articleId);
     if(!article) {
         return res.status(404).json({error: "Article Not Found!"});
     }
@@ -32,7 +32,7 @@ const createNewArticle = async (req, res) => {
 const updateArticle = async (req, res) => {
     const articleId = parseInt(req.params.id);
     const {title, content} = req.body;
-    const article = articles.find(a => a.id === articleId);
+    const article = articles.findIndex(a => a.id === articleId);
     if(!article) {
         return res.status(404).json({error: "Article Not Found"});
     }
@@ -45,8 +45,8 @@ const updateArticle = async (req, res) => {
 }
 
 const deleteArticle = async (req, res) => {
-    const articleId = parseInt(articles.params.id);
-    const article = articles.find(a => a.id === articleId);
+    const articleId = parseInt(req.params.id);
+    const index = articles.findIndex(a => a.id === articleId);
     if(index === -1) {
         return res.status(404).json({error: "Article Not Found"});
     } 

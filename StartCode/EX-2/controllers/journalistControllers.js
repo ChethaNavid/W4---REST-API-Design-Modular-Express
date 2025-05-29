@@ -8,7 +8,7 @@ const getAlljournalists = async (req, res) => {
 // GET /journalists/:id - Get one journalist
 const getjournalistById = async (req, res) => {
     const journalistId = parseInt(req.params.id);
-    const journalist = journalists.find(j => j.id === journalistId);
+    const journalist = journalists.findIndex(j => j.id === journalistId);
     if (!journalist) { 
         return res.status(404).json({ error: 'journalist not found' });
     }
@@ -35,7 +35,7 @@ const updatejournalists = async (req, res) => {
     const journalistId = parseInt(req.params.id);
     const { name, email } = req.body;
 
-    const journalist = journalists.find(j => j.id === journalistId);
+    const journalist = journalists.findIndex(j => j.id === journalistId);
     if (!journalist) {
         return res.status(404).json({ error: 'journalist not found' });
     }
@@ -58,7 +58,7 @@ const deletejournalists = async (req, res) => {
 // GET /journalists/:id/articles — Article by specific journalist
 const articleByJournalist = async (req, res) => {
     const journalistId = parseInt(req.params.id);
-    const journalist = journalists.find(j => j.id === journalistId);
+    const journalist = journalists.findIndex(j => j.id === journalistId);
     if(!journalist) {
         res.status(404).json({error: "Journalist Not Found"});
     }
