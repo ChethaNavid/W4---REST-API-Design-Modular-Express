@@ -6,7 +6,7 @@ const getAllcategories = async (req, res) => {
 
 const getcategoryById = async (req, res) => {
     const categoryId = parseInt(req.params.id);
-    const category = categories.find(c => c.id === categoryId);
+    const category = categories.findIndex(c => c.id === categoryId);
     if(!category) {
         return res.status(404).json({error: "category Not Found!"});
     }
@@ -29,7 +29,7 @@ const createNewcategory = async (req, res) => {
 const updatecategory = async (req, res) => {
     const categoryId = parseInt(req.params.id);
     const {name} = req.body;
-    const category = categories.find(c => c.id === categoryId);
+    const category = categories.findIndex(c => c.id === categoryId);
     if(!category) {
         return res.status(404).json({error: "category Not Found"});
     }
@@ -42,7 +42,7 @@ const updatecategory = async (req, res) => {
 
 const deletecategory = async (req, res) => {
     const categoryId = parseInt(categories.params.id);
-    const category = categories.find(c => c.id === categoryId);
+    const category = categories.findIndex(c => c.id === categoryId);
     if(index === -1) {
         return res.status(404).json({error: "category Not Found"});
     } 
@@ -52,7 +52,7 @@ const deletecategory = async (req, res) => {
 
 const articleFromCategories = async (req, res) => {
     const categoryId = pasreInt(req.params.id);
-    const category = categories.find(c => c.id === categoryId);
+    const category = categories.findIndex(c => c.id === categoryId);
     if(!category) {
         res.status(404).json({error: "Category Not Found"});
     }
